@@ -9,10 +9,10 @@
             controller: 'MainController'
         })
 
-        // nerds page that will use the NerdController
-        .when('/nerds', {
-            templateUrl: 'views/nerd.html',
-            controller: 'NerdController'
+        // R page that will use the RController
+        .when('/R', {
+            templateUrl: 'views/R.html',
+            controller: 'RController'
         });
 
     $locationProvider.html5Mode(true);
