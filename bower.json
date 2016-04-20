@@ -6,6 +6,8 @@
         "font-awesome": "latest",
         "animate.css": "latest",
         "angular": "latest",
-        "angular-route": "latest"   
+        "angular-route": "latest",
+        "angular-ui-ace": "0.2.3",
+        "jquery": "^2.2.2"
     }
 }

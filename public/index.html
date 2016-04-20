@@ -1,9 +1,10 @@
 <!-- public/index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <base href="/">
+    
 
     <title>Starter Node and Angular</title>
 
@@ -12,8 +13,11 @@
     <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 
     <!-- JS -->
+    <script src="libs/jquery/dist/jquery.js"></script>
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+
 
     <!-- ANGULAR CUSTOM -->
     <script src="js/controllers/MainCtrl.js"></script>
@@ -21,25 +25,29 @@
     <script src="js/services/NerdService.js"></script>
     <script src="js/appRoutes.js"></script>
     <script src="js/app.js"></script>
+    
+        <!--Ace script viewer-->
+    <script src="libs/ace-builds/src-noconflict/ace.js"></script>
+    <script src="libs/angular-ui-ace/ui-ace.min.js"></script>
 </head>
 <body ng-app="sampleApp" ng-controller="NerdController">
-<div class="container">
+
 
     <!-- HEADER -->
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Stencil: Node and Angular</a>
+            <a class="navbar-brand" href="/">Node and Angular</a>
         </div>
 
         <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
         <ul class="nav navbar-nav">
-            <li><a href="/nerds">Nerds</a></li>
+            <li><a href="/nerds">R Test</a></li>
         </ul>
     </nav>
 
     <!-- ANGULAR DYNAMIC CONTENT -->
     <div ng-view></div>
 
-</div>
+
 </body>
 </html>

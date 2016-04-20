@@ -1,7 +1,33 @@
 <!-- public/views/nerd.html -->
 
-<div class="jumbotron text-center">
-    <h1>Nerds and Proud</h1>
+<div>
 
-    <p>{{ tagline }}</p>
+    <div id="nav">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#R">R</a></li>
+        </ul>
+        
+        <div class="tab-content">
+          <div id="R Examples" class="tab-pane fade in active">
+            <div class="list-group">
+                <!--to use ngRepeat to get the practical examples list-->
+                <a class="list-group-item" ng-repeat="example in examples">
+                    {{ example }}
+                </a>
+            </div> 
+                <!--Possibility to change the mode. Not applicable yet.-->
+                <p><select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>      
+          </div>
+        </div>        
+    </div>
+    <div id="section">
+        <h3>Rscript
+            <!--to add ng-click directive-->
+            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Compute">
+              <span class="glyphicon glyphicon-play"></span>
+                
+            </button>
+        </h3>
+        <div class="col-sm-12" ui-ace="aceOption" ng-model="example1"></div>
+    </div>
 </div>
