@@ -1,7 +1,6 @@
 <!-- public/views/nerd.html -->
 
-<div>
-
+<div id="main">
     <div id="nav">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#R">R</a></li>
@@ -14,20 +13,73 @@
                 <a class="list-group-item" ng-repeat="example in examples">
                     {{ example }}
                 </a>
+
             </div> 
-                <!--Possibility to change the mode. Not applicable yet.-->
-                <p><select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>      
+                <!--Possibility to change the mode. Not applicable yet
+                <p><select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>.-->      
           </div>
         </div>        
     </div>
     <div id="section">
-        <h3>Rscript
-            <!--to add ng-click directive-->
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Compute">
-              <span class="glyphicon glyphicon-play"></span>
-                
-            </button>
-        </h3>
-        <div class="col-sm-12" ui-ace="aceOption" ng-model="example1"></div>
+
+            <!--buttons to add: new; open; save; saveaAs, Run-->
+
+            <div id="tools-bar" class="panel panel-default">
+                <div class="panel-heading">
+                    
+
+                    <!--new file button. a new file will be based on a predefined template-->
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" title="New">
+                    <span class="glyphicon glyphicon-file"></span>
+                    </button> 
+                    
+                    <!--open file. the file will be open from DB and filtered by username/id-->
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" title="Open">
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                    </button> 
+                    
+                    <!--save file. if is a new file, this button will act as save as button. if is an existing file, this will be saved-->
+                     <button type="button" class="btn btn-default" data-toggle="tooltip" title="Save">
+                    <span class="glyphicon glyphicon-floppy-save"></span>
+                    </button> 
+
+                     <!--will be replaced by Angular {{getFilename}}-->
+                    FileName.R
+                    
+
+                    <!--the file will be send to R session started on server to be compiled-->
+                    <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Compute" style="float: right;">Run
+                    <span class="glyphicon glyphicon-play"></span>
+                    </button>
+
+                    
+                </div>
+            </div>              
+        <div id="script-container">
+            <div class="col-sm-12" ui-ace="aceOption" ng-model="example1"></div>
+        </div>
+    </div>
+    
+    
+    <div id="section">
+        <div class="panel-group">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#Results">
+                        <button type="button" class="btn btn-info">Results</button>
+                    </a>
+                </h4>
+            </div>
+                <div id="Results" class="panel-collapse collapse">
+                    <h2>
+                        <!--to collect the results from R-->
+                        Result will be show here!
+                    </h2>
+                    <div class="panel-footer">Results</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+

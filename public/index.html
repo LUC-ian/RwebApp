@@ -6,7 +6,7 @@
     <base href="/">
     
 
-    <title>Starter Node and Angular</title>
+    <title>R for statistics</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
@@ -24,30 +24,83 @@
     <script src="js/controllers/NerdCtrl.js"></script>
     <script src="js/services/NerdService.js"></script>
     <script src="js/appRoutes.js"></script>
+    <script src="js/controllers/ChatCtrl.js"></script>
     <script src="js/app.js"></script>
+    
+    <!--Angular custom - user auth-->
+    <script src="auth/login/loginCtrl.js"></script>
+    <script src="auth/register/registerCtrl.js"></script>
+    <script src="profile/profileCtrl.js"></script>
+    <script src="common/services/authentication.service.js"></script>
+    <script src="common/services/data.service.js"></script>
+    <script src="common/directives/navigation/navigation.controller.js"></script>
+    <script src="common/directives/navigation/navigation.directive.js"></script>
     
         <!--Ace script viewer-->
     <script src="libs/ace-builds/src-noconflict/ace.js"></script>
     <script src="libs/angular-ui-ace/ui-ace.min.js"></script>
 </head>
-<body ng-app="sampleApp" ng-controller="NerdController">
-
+<body ng-app="Rwebapp">
 
     <!-- HEADER -->
     <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Node and Angular</a>
+          <a class="navbar-brand" href="/">R Programming</a>
+        </div>
+          <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+        <ul class="nav navbar-nav">
+          <li ><a href="/nerds">R Test</a></li>
+        </ul>
+          <!--standard tools-->
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-comment"></span> </a></li>
+
+            <li ng-hide="navvm.isLoggedIn"><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+            <li ng-hide="navvm.isLoggedIn"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li ng-show="navvm.isLoggedIn"><a href="/profile">{{ navvm.currentUser.name }}</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div id="wrapper" class="toggled"> 
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <div ng-controller="ChatController as chatController">
+                    <div >
+                        <div ng-repeat="message in chatController.messages track by $index">
+                            {{chatlist}}
+                            {{message.from}}: {{message.text}}
+                        </div>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="type your message here" ng-model="chatController.newMessage">
+                        <button ng-click="chatController.sendMessage(
+                                          chatController.newMessage)">Send</button>
+                        <select ng-model="chatController.sender">
+                            <option value="Timo">Timo</option>
+                            <option value="Lucian">Lucian</option>
+                        </select>
+                    </div>
+                </div>
+
+            </ul>
         </div>
 
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-            <li><a href="/nerds">R Test</a></li>
-        </ul>
-    </nav>
-
-    <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
-
-
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- ANGULAR DYNAMIC CONTENT -->
+                    <div ng-view class="col-lg-12"></div>
+                </div>
+            </div>
+        </div>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    </div> 
 </body>
 </html>

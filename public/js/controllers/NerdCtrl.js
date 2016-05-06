@@ -1,7 +1,7 @@
 // public/js/controllers/NerdCtrl.js
-angular.module('NerdCtrl', []).controller('NerdController', function($scope) {
+angular.module('RmodeCtrl', []).controller('NerdController', function($scope) {
 
-    $scope.modes = ['R', 'JSON', 'Latex' ]; //multimple modes can be selected. 
+    $scope.modes = ['R',]; //multimple modes can be selected 'JSON', 'Latex'. 
     $scope.mode = $scope.modes[0];
     
     
