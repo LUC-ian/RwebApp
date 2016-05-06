@@ -7,7 +7,9 @@ if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
 
-mongoose.connect(dbURI);
+//mongoose.connect(dbURI); 
+//when opening multiple connection use createConnection() instead of direct connect
+mongoose.createConnection(dbURI);
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {
